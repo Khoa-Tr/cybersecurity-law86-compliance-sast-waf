@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  # WAF: Nginx + ModSecurity
+  waf-nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile.waf
+    container_name: waf-modsecurity
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./logs:/var/log/nginx
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    external: true
+    name: 1_vulnerable-webapp_app-network

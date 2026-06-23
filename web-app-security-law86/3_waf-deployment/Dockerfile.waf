@@ -1,0 +1,19 @@
+FROM owasp/modsecurity-crs:nginx-alpine
+
+# Install additional tools
+USER root
+RUN apk add --no-cache curl wget openssl
+
+# Disable all entrypoint scripts since we provide a complete custom config
+RUN rm -rf /docker-entrypoint.d/*
+
+# Copy custom configs
+COPY nginx-config/nginx.conf /etc/nginx/nginx.conf
+COPY nginx-config/modsecurity.conf /etc/modsecurity.d/modsecurity.conf
+COPY nginx-config/rules/ /etc/modsecurity.d/rules/
+COPY nginx-config/403.html /usr/share/nginx/html/403.html
+
+# Create log directory
+RUN mkdir -p /var/log/modsecurity
+
+EXPOSE 80 443

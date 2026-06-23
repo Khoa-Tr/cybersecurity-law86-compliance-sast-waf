@@ -1,0 +1,50 @@
+# robots.txt - Vulnerable Web App Demo
+# SECURITY NOTE: Listing sensitive paths in robots.txt is a vulnerability!
+# Attackers use this file to discover hidden endpoints.
+# This is intentional for educational purposes.
+
+User-agent: *
+
+# Public paths
+Allow: /
+Allow: /login
+Allow: /posts
+
+# Sensitive paths (should NOT be in robots.txt in real apps)
+Disallow: /admin
+Disallow: /admin/users
+Disallow: /admin/settings
+Disallow: /api/
+Disallow: /api/users
+Disallow: /api/posts
+Disallow: /api/admin
+Disallow: /.env
+Disallow: /.git
+Disallow: /storage
+Disallow: /backup
+Disallow: /config
+Disallow: /database
+Disallow: /profile/1
+Disallow: /profile/999
+Disallow: /phpmyadmin
+Disallow: /debug
+Disallow: /logs
+Disallow: /telescope
+
+# Sitemap
+Sitemap: http://localhost:8000/sitemap.xml
+
+# ==============================================
+# SERVICE LINKS (All accessible endpoints)
+# ==============================================
+# Vulnerable Web App:  http://localhost:8000
+# Login Page:          http://localhost:8000/login
+# Dashboard:           http://localhost:8000/dashboard
+# Posts List:          http://localhost:8000/posts
+# Create Post (XSS):   http://localhost:8000/posts/create
+# Profile (IDOR):      http://localhost:8000/profile/{id}
+# Profile Admin:       http://localhost:8000/profile/1
+#
+# SonarQube:           http://localhost:9000  (admin/admin)
+# phpMyAdmin:          http://localhost:8080  (root/root123)
+# WAF/Nginx:           http://localhost:80

