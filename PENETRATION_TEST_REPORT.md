@@ -79,7 +79,7 @@ $user = DB::table('users')
 - [ ] No concatenation of user input in SQL
 - [ ] Review all database queries with static analysis (SonarQube)
 - [ ] Test with SQLMap: `sqlmap -r login.txt --risk=3`
-
+![Bằng chứng hack SQL Injection](screenshots/sqli_login.png)
 ---
 
 ### 1.2 CROSS-SITE SCRIPTING - STORED (CWE-79)

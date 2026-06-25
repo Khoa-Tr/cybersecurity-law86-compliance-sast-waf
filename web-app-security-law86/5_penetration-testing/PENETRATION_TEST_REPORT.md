@@ -439,8 +439,23 @@ $validated = $request->validate([
 
 ---
 
-## 6. TOOLS & TECHNIQUES USED
-## 6. CÔNG CỤ & KỸ THUẬT SỬ DỤNG
+## 6. KẾT QUẢ QUÉT MÃ NGUỒN TĨNH (SAST - SONARQUBE)
+
+**Công cụ sử dụng:** SonarQube Community Edition
+
+![Tổng quan kết quả quét SonarQube](screenshots/sonarqube_dashboard.png)
+![Chi tiết lỗi Hardcoded Password](screenshots/sonar_hardcoded_pass.png)
+
+> [!WARNING]
+> **Đánh giá và Hạn chế của công cụ:**
+> SonarQube đã phát hiện thành công lỗ hổng cực kỳ nghiêm trọng (Blocker) liên quan đến việc để lộ mật khẩu Database trong mã nguồn (CWE-798). Tuy nhiên, do sử dụng phiên bản Community Edition (không hỗ trợ tính năng Taint Analysis), công cụ đã không thể tự động dò ra các lỗ hổng Injection phức tạp như SQLi và XSS. 
+> 
+> **Khuyến nghị:** Trong thực tế dự án, cần kết hợp thêm các công cụ SAST Open-source khác (như Semgrep) hoặc cân nhắc nâng cấp lên phiên bản SonarQube Developer để đảm bảo độ bao phủ bảo mật 100%.
+
+---
+
+## 7. TOOLS & TECHNIQUES USED
+## 7. CÔNG CỤ & KỸ THUẬT SỬ DỤNG
 
 ### Vulnerability Scanning / Quét lỗ hổng
 - **SonarQube:** Phân tích chất lượng và bảo mật mã nguồn tĩnh (SAST)
@@ -471,7 +486,7 @@ Cross-origin fetch requests
 
 ---
 
-## 7. COMPLIANCE ASSESSMENT
+## 9. COMPLIANCE ASSESSMENT
 
 ### Law 86/2025 Compliance Status
 
@@ -484,7 +499,7 @@ Cross-origin fetch requests
 
 ---
 
-## 8. RECOMMENDATIONS
+## 10. RECOMMENDATIONS
 
 ### Security Best Practices
 1. **Implement Defense in Depth**
@@ -514,8 +529,8 @@ Cross-origin fetch requests
 
 ---
 
-## 9. CONCLUSION
-## 9. KẾT LUẬN
+## 11. CONCLUSION
+## 11. KẾT LUẬN
 
 The NexusHR SaaS application contained multiple critical security issues that could lead to complete system compromise. After implementing the recommended remediations, the application achieves:
 

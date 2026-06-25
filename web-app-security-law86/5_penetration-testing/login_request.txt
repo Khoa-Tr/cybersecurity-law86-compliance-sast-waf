@@ -1,0 +1,19 @@
+curl 'http://localhost:8000/login' \
+  -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7' \
+  -H 'Accept-Language: vi-VN,vi;q=0.9,fr-FR;q=0.8,fr;q=0.7,en-US;q=0.6,en;q=0.5' \
+  -H 'Cache-Control: max-age=0' \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -b 'pma_lang=vi; JWT-SESSION=eyJhbGciOiJIUzI1NiJ9.eyJsYXN0UmVmcmVzaFRpbWUiOjE3ODIzNTcxNjk5ODcsInhzcmZUb2tlbiI6ImFhbnBrMXZicjRkMm0ybm5raWxpYzMwbzh0IiwianRpIjoiZjcyN2Q5MjUtNGU3Ni00YmUxLWE1NzAtNDE4OTNhOTBjZDI0Iiwic3ViIjoiZjliYTIwMzktM2ZiYy00ZmY1LTg3YTYtMjc0OGZkYmM0ZGMxIiwiaWF0IjoxNzgyMzU3MTY5LCJleHAiOjE3ODI2MTYzNjR9.MOnuGKRYt_92K6uHJbB3zS1fGdf3FbaAOvEQI--Exfg; XSRF-TOKEN=eyJpdiI6Ilp2WTI2RjFXR1VyTkJzZ1ZZREdUdHc9PSIsInZhbHVlIjoiQnF6ajdFSTR6Sm13dHFwNWoxR3FFc0RRam9yV0JLczFGV0c1WEtVdjRYd2JSNVRQKy85bFZWRWRXWmFCcFVvZGJUNVBVTzBiTTk5K3RXdkc5VlpncTVrdy81MXNzbkxBMHNJV281ME1KUnQ0ZjV0Y2RQQnRLcTJZWVJic2YxUG8iLCJtYWMiOiI2MzU0NmYzNTI5M2U5MjAyNjE3NmMxYWZiZjE4MGRjMDA4ZDc1NmU3NGRlZGE4ZWY2MmRlODg0YzA4MTc1MzI2IiwidGFnIjoiIn0%3D; vulnerable_web_app_law_862025_session=eyJpdiI6InJtMUhaWHU4NmFWMlNtVVU4WUtVZmc9PSIsInZhbHVlIjoiUVhGTXlBK2hqeWxsaVhyT1ExSkJ3d2VZcGg2WjRnMnJHRjNuNHhYbEhjcmdIVnRKbFZjWnJhM2E1WGk5TlEzSlJ4Y3N6eXptV0EzTjlIVjIveWxMbFJkeWZ4bWlCOUxZWG9Xc3FnRnJVWUNYLzVaSyswUXg5VTN6UE5nTHZ3SVAiLCJtYWMiOiJkYjA0YThkMTlmYmNjZDJhMWUxMDI3ODBiZWRlNDllZDdhNmM0MTc1Yzc1OGQzOGM4N2ZkNzA2ZDM1NzkwNjA3IiwidGFnIjoiIn0%3D' \
+  -H 'Origin: http://localhost:8000' \
+  -H 'Referer: http://localhost:8000/login' \
+  -H 'Sec-Fetch-Dest: document' \
+  -H 'Sec-Fetch-Mode: navigate' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'Sec-Fetch-User: ?1' \
+  -H 'Upgrade-Insecure-Requests: 1' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36' \
+  -H 'sec-ch-ua: "Google Chrome";v="149", "Chromium";v="149", "Not)A;Brand";v="24"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  --data-raw '_token=YpOjzvRbybXMdPXWBcdfYBNQu46rou0K2KQPKU97&username=hih&password=123'
