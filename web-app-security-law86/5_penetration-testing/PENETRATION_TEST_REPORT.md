@@ -83,7 +83,9 @@ $user = DB::table('users')
 - [ ] No concatenation of user input in SQL
 - [ ] Review all database queries with static analysis (SonarQube)
 - [ ] Test with SQLMap: `sqlmap -r login.txt --risk=3`
-
+![Bằng chứng hack SQL Injection](screenshots/sqli_login.png)
+![Bằng chứng hack SQL Injection](screenshots/sqli_dashboard.png)
+![Bằng chứng hack SQL Injection](screenshots/zap_sqli_scan.png)
 ---
 
 ### 1.2 CROSS-SITE SCRIPTING - STORED (CWE-79)
@@ -135,6 +137,8 @@ $post->content = htmlspecialchars($content, ENT_QUOTES, 'UTF-8');
 - [ ] Content Security Policy (CSP) headers enabled
 - [ ] Test with: `<img src=x onerror="alert('XSS')">`
 
+![Bằng chứng hack xss](screenshots/xss_payload.png)
+![Bằng chứng hack xss](screenshots/xss_success.png)
 ---
 
 ### 1.3 HARDCODED CREDENTIALS (CWE-798)
@@ -199,7 +203,7 @@ secrets/
 - [ ] `.env` file in `.gitignore`
 - [ ] Use `git-secrets` pre-commit hook
 - [ ] Scan with `truffleHog` or `detect-secrets`
-
+![Bằng chứng hack HARDCODED CREDENTIALS](screenshots/zap_env_leak.png)
 ---
 
 ### 1.4 INSECURE DIRECT OBJECT REFERENCES - IDOR (CWE-639)
@@ -275,6 +279,8 @@ public function show(User $user)
 - [ ] No sequential/guessable ID exposure
 - [ ] Test all CRUD operations for authorization
 - [ ] Use UUIDs instead of sequential IDs
+![Bằng chứng tấn công IDOR và Nâng quyền bằng Burp Suite](screenshots/burp_idor.png)
+![Bằng chứng tấn công IDOR và Nâng quyền bằng Burp Suite](screenshots/burp_mass_assignment.png)
 
 ---
 
@@ -325,7 +331,7 @@ X-CSRF-TOKEN: {{ csrf_token() }}
 - [ ] All POST/PUT/DELETE forms have CSRF tokens
 - [ ] SameSite cookie attribute enabled
 - [ ] Verify token validation in middleware
-
+![Bằng chứng tấn công IDOR và Nâng quyền bằng Burp Suite](screenshots/zap_csrf.png)
 ---
 
 ## 2. HIGH SEVERITY VULNERABILITIES
@@ -452,10 +458,20 @@ $validated = $request->validate([
 > 
 > **Khuyến nghị:** Trong thực tế dự án, cần kết hợp thêm các công cụ SAST Open-source khác (như Semgrep) hoặc cân nhắc nâng cấp lên phiên bản SonarQube Developer để đảm bảo độ bao phủ bảo mật 100%.
 
----
+## 7. KIỂM THỬ TƯỜNG LỬA BẢO VỆ (WAF)
 
-## 7. TOOLS & TECHNIQUES USED
-## 7. CÔNG CỤ & KỸ THUẬT SỬ DỤNG
+**Công cụ sử dụng:** Automation Bash Script (`run-waf-tests.sh`)
+
+![Kết quả Tường lửa WAF chặn đứng mã độc](screenshots/waf_test_result1.png)
+![Kết quả Tường lửa WAF chặn đứng mã độc](screenshots/waf_test_result2.png)
+
+> [!TIP]
+> **Đánh giá hiệu năng Tường lửa (WAF):**
+> Nhờ cấu hình ModSecurity WAF, kịch bản kiểm thử tự động đã chứng minh WAF hoạt động cực kỳ hiệu quả. Hệ thống đã tự động nhận diện và **chặn đứng (trả về lỗi HTTP 403 Forbidden)** toàn bộ các cuộc tấn công nguy hiểm (SQL Injection, XSS, Path Traversal, PHP Injection). Điều này chứng minh ứng dụng đã được trang bị lớp phòng thủ vòng ngoài vững chắc, tuân thủ đúng yêu cầu của Luật An Ninh Mạng!
+
+
+## 8. TOOLS & TECHNIQUES USED
+## 8. CÔNG CỤ & KỸ THUẬT SỬ DỤNG
 
 ### Vulnerability Scanning / Quét lỗ hổng
 - **SonarQube:** Phân tích chất lượng và bảo mật mã nguồn tĩnh (SAST)
@@ -492,10 +508,10 @@ Cross-origin fetch requests
 
 | Requirement | Before | After | Status |
 |---|---|---|---|
-| Data Protection (Art. 23) | ❌ FAIL | ✅ PASS | Fixed |
-| System Security (Art. 24) | ❌ FAIL | ✅ PASS | Fixed |
-| Audit Logging (Art. 25) | ❌ FAIL | ✅ PASS | Implemented |
-| Incident Response (Art. 26) | ⚠️ PARTIAL | ✅ PASS | Documented |
+| Data Protection (Art. 23) |  FAIL |  PASS | Fixed |
+| System Security (Art. 24) |  FAIL |  PASS | Fixed |
+| Audit Logging (Art. 25)   |  FAIL |  PASS | Implemented |
+| Incident Response (Art. 26) |  PARTIAL |  PASS | Documented |
 
 ---
 
@@ -536,10 +552,10 @@ The NexusHR SaaS application contained multiple critical security issues that co
 
 *Ứng dụng NexusHR SaaS chứa nhiều lỗ hổng bảo mật nghiêm trọng có thể dẫn đến xâm phạm toàn bộ hệ thống. Sau khi áp dụng các biện pháp khắc phục được khuyến nghị, ứng dụng đạt được:*
 
-✅ **Low Risk Status / Mức độ rủi ro thấp**  
-✅ **Law 86/2025 Compliance / Tuân thủ Luật 86/2025**  
-✅ **OWASP Top 10 Coverage / Bao phủ OWASP Top 10**  
-✅ **Industry Best Practices / Thực hành tốt nhất ngành**
+**Low Risk Status / Mức độ rủi ro thấp**  
+**Law 86/2025 Compliance / Tuân thủ Luật 86/2025**  
+**OWASP Top 10 Coverage / Bao phủ OWASP Top 10**  
+**Industry Best Practices / Thực hành tốt nhất ngành**
 
 The application is now suitable for deployment with ongoing security monitoring.
 
