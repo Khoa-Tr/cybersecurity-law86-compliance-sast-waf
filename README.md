@@ -325,20 +325,27 @@ bash run-waf-tests.sh
 
 ### Code Quality (SonarQube)
 ```
-Lines of Code:           ~500
-Code Smells:             45
-Vulnerabilities:         27
-Security Hotspots:       12
-Test Coverage:           0% (intentional)
+Lines of Code:           ~744
+Security Blockers: 2
+Reliability: 5 issues  
+Maintainability: 17 issues
+
 ```
 
 ### WAF Effectiveness
 ```
-Total Attacks Tested:    32
-Blocked Requests:        30 (93.75%)
-Allowed Requests:        2 (6.25%)
-False Positives:         1 (3.1%)
-Detection Rate:          95%+
+Total Tests:             18
+Passed (Blocked):        14 (77.8%)
+Failed (Not Blocked):    4 (22.2%)
+False Positives:         1
+
+Known Limitations:
+- OS Command Injection (semicolon/pipe) → Not blocked
+  Reason: CRS default rules avoid blocking ; and | due to high false positive risk
+- SQLMap Scanner Detection → Not blocked  
+  Reason: Requires additional bot-detection rules
+- Rate Limiting → Not configured
+  Reason: Needs separate Nginx limit_req module setup
 ```
 
 ### Compliance Status
@@ -534,9 +541,9 @@ docker-compose up -d
 
 This project is for educational purposes.
 
-**Author:** Security Education Project  
-**Created:** 2024  
-**Updated:** 2024-12-15  
+**Author:** Trần Đăng Khoa
+**Created:** 2026 
+**Updated:** 2026-06
 **License:** Educational Use Only
 
 ---
@@ -600,5 +607,5 @@ For questions or updates, review the comprehensive documentation in each project
 ---
 
 **Version:** 1.0  
-**Last Updated:** 2024-12-15  
-**Maintained By:** Security Team
+**Last Updated:**  2026-06    
+
