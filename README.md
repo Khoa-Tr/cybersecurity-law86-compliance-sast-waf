@@ -73,7 +73,8 @@ web-app-security-law86/
 │   ├── PENETRATION_TEST_REPORT.md
 │   ├── TEST_CASES.md
 │   ├── OWASP_TOP_10.md
-│   └── EVIDENCE/
+│   └── EVIDENCE
+    └── screenshots
 │
 ├── 📁 6_automation/                  # Scripts and automation
 │   ├── setup.sh
